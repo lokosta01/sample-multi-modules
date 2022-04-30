@@ -1,0 +1,93 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'org.jetbrains.kotlin.kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompile).configureEach { task ->
+    task.kotlinOptions {
+        jvmTarget = "11"
+    }
+}
+android {
+    compileSdk ANDROID_COMPILE_SDK_VERSION
+
+    defaultConfig {
+        applicationId "com.sample.modules"
+        minSdk ANDROID_MIN_SDK_VERSION
+        targetSdk ANDROID_TARGET_SDK_VERSION
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility SOURCE_COMPATIBILITY_VERSION
+        targetCompatibility TARGET_COMPATIBILITY_VERSION
+    }
+    kotlinOptions {
+        jvmTarget = '11'
+        useIR = true
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.1.0-beta04'
+        kotlinCompilerVersion '1.5.31'
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+    implementation libraries.androidxCore
+    implementation libraries.androidLifecycleScope
+    implementation libraries.uiCompose
+    implementation libraries.materialCompose
+    implementation libraries.previewCompose
+    implementation libraries.androidLifecycleScope
+    implementation libraries.navigationCompose
+
+    implementation libraries.activityCompose
+
+    implementation libraries.dagger
+    kapt libraries.daggerKapt
+    implementation libraries.hilt
+    kapt libraries.hiltKapt
+
+    implementation libraries.retrofit
+    implementation libraries.retrofitConverterGson
+    implementation libraries.okHttp
+    implementation libraries.okHttpLoggingInterceptor
+    implementation libraries.timber
+    implementation libraries.gson
+
+    androidTestImplementation tests.junit4Compose
+    debugImplementation tests.uiToolingCompose
+    debugImplementation tests.uiTestManifestCompose
+    testImplementation tests.junit
+    androidTestImplementation tests.androidxJUnit
+    androidTestImplementation tests.androidxEspressoCore
+
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1"
+
+    implementation project(':core')
+    implementation project(':featureA')
+    implementation project(':featureB')
+    implementation project(':navigation')
+}

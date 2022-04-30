@@ -1,0 +1,73 @@
+def composeVersion = '1.2.0-alpha08'
+def coroutinesCore = '1.6.1'
+def lifecycle = '2.2.0'
+def androidxCore = '1.7.0'
+def dagger = '2.40.5'
+def retrofit = '2.9.0'
+def okHttp = '4.9.3'
+def navigation = '2.5.0-beta01'
+def timber = '4.7.1'
+def gson = '2.8.6'
+def composeActivity = '1.4.0'
+
+def junit = '4.13.2'
+def androidxJUnit = '1.1.3'
+def androidxEspressoCore = '3.4.0'
+def KOTLIN_VERSION = '1.6.0'
+def GRADLE_VERSION = '7.0.4'
+
+ext {
+    ANDROID_COMPILE_SDK_VERSION = 32
+    ANDROID_MIN_SDK_VERSION = 21
+    ANDROID_TARGET_SDK_VERSION = 32
+
+    compose_version = '1.2.0-alpha08'
+    SOURCE_COMPATIBILITY_VERSION = JavaVersion.VERSION_11
+    TARGET_COMPATIBILITY_VERSION = JavaVersion.VERSION_11
+
+    appPlugins = [
+        hiltPlugin              : "com.google.dagger:hilt-android-gradle-plugin:$dagger",
+        kotlinPlugin            : "org.jetbrains.kotlin:kotlin-gradle-plugin:$KOTLIN_VERSION",
+        gradlePlugin            : "com.android.tools.build:gradle:$GRADLE_VERSION",
+        navigationPlugin        : "androidx.navigation:navigation-safe-args-gradle-plugin:$navigation"
+    ]
+
+    libraries = [
+        coroutinesCore               : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesCore",
+        coroutinesAndroid            : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesCore",
+        uiCompose                    : "androidx.compose.ui:ui:$composeVersion",
+        materialCompose              : "androidx.compose.material:material:$composeVersion",
+        previewCompose               : "androidx.compose.ui:ui-tooling-preview:$composeVersion",
+        navigationCompose            : "androidx.navigation:navigation-compose:$navigation",
+        activityCompose              : "androidx.activity:activity-compose:$composeActivity",
+
+        androidxCore                 : "androidx.core:core-ktx:$androidxCore",
+        androidLifecycleScope        : "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle",
+        androidViewModelScope        : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle",
+
+
+        dagger                       : "com.google.dagger:dagger:$dagger",
+        daggerKapt                   : "com.google.dagger:dagger-compiler:$dagger",
+        hilt                         : "com.google.dagger:hilt-android:$dagger",
+        hiltKapt                     : "com.google.dagger:hilt-compiler:$dagger",
+
+        retrofit                     : "com.squareup.retrofit2:retrofit:$retrofit",
+        retrofitConverterGson        : "com.squareup.retrofit2:converter-gson:$retrofit",
+
+        okHttp                       : "com.squareup.okhttp3:okhttp:$okHttp",
+        okHttpLoggingInterceptor     : "com.squareup.okhttp3:logging-interceptor:$okHttp",
+
+        timber                       : "com.jakewharton.timber:timber:$timber",
+        gson                         : "com.google.code.gson:gson:$gson",
+    ]
+
+    tests = [
+        junit               : "junit:junit:$junit",
+        androidxJUnit       : "androidx.test.ext:junit:$androidxJUnit",
+        androidxEspressoCore: "androidx.test.espresso:espresso-core:$androidxEspressoCore",
+
+        junit4Compose       : "androidx.compose.ui:ui-test-junit4:$composeVersion",
+        uiToolingCompose    : "androidx.compose.ui:ui-tooling:$composeVersion",
+        uiTestManifestCompose: "androidx.compose.ui:ui-test-manifest:$composeVersion"
+    ]
+}
