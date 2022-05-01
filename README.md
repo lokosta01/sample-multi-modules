@@ -1,1 +1,1 @@
-this project shows a simple example of a multi-module architecture
+this project shows a simple example of a multi-module architecture with compose
