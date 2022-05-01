@@ -1,0 +1,31 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'org.jetbrains.kotlin.kapt'
+    id 'dagger.hilt.android.plugin'
+}
+apply from: "$rootProject.projectDir/module.gradle"
+
+dependencies {
+
+    implementation libraries.androidxCore
+    implementation libraries.androidLifecycleScope
+    implementation libraries.uiCompose
+    implementation libraries.materialCompose
+    implementation libraries.previewCompose
+    implementation libraries.androidLifecycleScope
+    implementation libraries.navigationCompose
+
+    implementation libraries.dagger
+    kapt libraries.daggerKapt
+    implementation libraries.hilt
+    kapt libraries.hiltKapt
+
+    implementation libraries.retrofit
+    implementation libraries.retrofitConverterGson
+    implementation libraries.okHttp
+    implementation libraries.okHttpLoggingInterceptor
+    implementation libraries.timber
+    implementation libraries.gson
+
+}
